@@ -8,7 +8,7 @@ interface EnvVars {
 }
 
 const envsSchema = joi
-    .object<EnvVars>({
+    .object({
         PORT: joi.number().required(),
         PRODUCT_MICROSERVICES_HOST: joi.string().required(),
         PRODUCT_MICROSERVICES_POST: joi.number().required()
@@ -21,10 +21,10 @@ if (error) {
     throw new Error(`Config validation error error: ${error.message}`);
 }
 
-const envVarsL: EnvVars = value;
+const envVars: EnvVars = value;
 
 export const envs = {
-    port: envVarsL.PORT,
-    productMicroservicesHost: envVarsL.PRODUCT_MICROSERVICES_HOST,
-    productMicroservicesPost: envVarsL.PRODUCT_MICROSERVICES_POST
+    port: envVars.PORT,
+    productMicroservicesHost: envVars.PRODUCT_MICROSERVICES_HOST,
+    productMicroservicesPost: envVars.PRODUCT_MICROSERVICES_POST
 };
